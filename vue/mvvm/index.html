@@ -10,7 +10,66 @@
     <!-- VUE 是MVVM
     data-binding
     template 模板  compile 被编译   -->
-    <!-- 模板与data之间的绑定 -->
-    <div id="app"></div>
+    <!-- 支持对{{}}解析 template compile
+         template -> html 
+         {{key}} data{name: '喻顺武'} 回填 
+         1 打坑  2 填值 -->
+    <!-- 手写vue  模板与data之间的绑定 -->
+    <div id="app">
+        <h3>姓名</h3>
+        <p>我的名字是{{name}}</p>
+        <h3>年龄</h3>
+        <p>{{age}}</p>
+        <div class="msg">
+            <p>{{msg}}</p>
+        </div>
+    </div>
+    <script>
+        class Vue{
+            constructor(opt){
+                this.opt = opt;
+                this.root = document.querySelector(this.opt.el);
+                this.compile(this.root);
+            }
+            compile(node){
+                // {{.*}}
+                // 遍历结点 （递归）  找到文本结点
+                [].forEach.call(node.childNodes, child => {         //临时借用forEach方法   类数组 
+                    // console.log(child.innerHTML);
+                    // 只有{{}}才需要做，正则 判断是否包含花括号｛｝
+                    // 子结点下面还没有孙结点 第一个子结点
+                    // console.log(child.firstElementChild);
+                    if(!child.firstElementChild && /\{\{(.*)\)\}/.test(child.innerHTML)){
+                    // if(/\{\{(.*)\)\}/.test(child.innerHTML)){
+                        // {{name}}
+                        let key = RegExp.$1.trim();
+                        child.innerHTML = child.innerHTML.replace(/\{\{(.*)\)\}/,this.opt.data[key]);
+                        // child.innerHTML = this.opt.data[key];
+                        // console.log(RegExp.$1, RegExp.$2)
+                        // child.innerHTML = this.opt.data.name;
+                    }else if(child.firstElementChild){
+                        this.compile(child);
+                    }
+                    // if(child.innerHTML == '{{name}}'){
+                    //     child.innerHTML = this.opt.data.name;
+                    // }
+                });     
+                // console.log(node.childNodes);
+            }
+        }
+        document.addEventListener('DOMContentLoaded',function(){
+            // 快一点，
+            let options = {
+                el: '#app',     //根节点
+                data: {
+                    name: '检索中...',
+                    age: 30,
+                    msg: 'vue 高手，月薪5万'
+                }
+            }
+            new Vue(options)
+        });
+        
+    </script>
 </body>
 </html>
