@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <comment/>
+    <article-table/>
+    <!-- <comment/> -->
     <!-- <ele-radio-group v-model="sex">
       <ele-radio label="0">女</ele-radio>
       <ele-radio label="1">男</ele-radio>
@@ -12,6 +13,7 @@
 
 <script>
 // @表示alias 地址短链接 在哪里都指向src 让地址引入更轻松
+import ArticleTable from '@/views/ArticleTable'
 import Comment from '@/components/Comment'
 import EleRadioGroup from '@/components/EleRadioGroup'
 import EleRadio from '@/components/EleRadio'
@@ -20,10 +22,11 @@ import Login from '@/views/Login'
 export default {
   name: 'App',
   components: {
-    Comment
-    // Login,
-    // EleRadioGroup,
-    // EleRadio
+    ArticleTable,
+    Comment,
+    Login,
+    EleRadioGroup,
+    EleRadio
   },
   data(){
     return{

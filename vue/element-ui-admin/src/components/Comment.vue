@@ -30,21 +30,6 @@ export default {
         Pagination
     },
     methods: {
-        // addComment(msg){    // 自定义方法事件
-        //     // console.log(msg);
-        //     this.totalData.push({ text: msg });
-        //     this.totalCount = this.totalData.length;
-        //     if(this.totalCount <= this.pageSize){
-        //         this.list = this.totalData
-        //     } else{
-        //         this.list = this.totalData.slice(this.totalCount-this.pageSize)   // slice() 方法可从已有的数组中返回选定的元素。
-        //     }
-        //     this.currentPage = 1;
-        //     this.list.reverse();   // reverse() 方法用于颠倒数组中元素的顺序。
-        // },
-        // turnPage(curr){
-        //     console.log(curr);
-        // }
         addComment(msg){    // 自定义方法事件
             this.totalData.unshift({ text: msg });
             this.totalCount = this.totalData.length;
