@@ -13,14 +13,13 @@
     <div id="app">
         <dmliu></dmliu>  
         <panda></panda>
-        <!-- 渲染 模板输出方式   -->
     </div>
 
     <script type="text/javascript">
         Vue.component('dmliu', {
             template: `<div style="color: red">我是全局的dmliu组件</div>`
         })
-        var app = new Vue({   //声明变量  vue实例化 声明器
+        var app = new Vue({   //声明变量 
             el: '#app',
             components: {
                 "panda": {
