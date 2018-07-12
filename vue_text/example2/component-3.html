@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component父子组件的继承</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component父子组件的继承</h1>
+    <hr>
+    <div id="app">
+        <panda></panda>
+    </div>
+
+    <script type="text/javascript">
+        var city = {
+            template: `<div style="color: green;">siChuan of China!</div>`
+        }
+        var pandaComponent = {     // 声明对象
+            template: `
+                <div>
+                    <p>Panda from China!</p>
+                    <city></city>
+                </div>
+                `,
+            components: {
+                "city": city
+            }
+        }
+        var app = new Vue({   //声明变量 
+            el: '#app',
+            components: {
+                "panda": pandaComponent
+            } 
+        })
+    </script>
+</body>
+</html>
