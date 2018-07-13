@@ -8,6 +8,8 @@ import VueResource from 'vue-resource'
 import store from './store'
 // import TimeEntries from './components/TimeEntries.vue'
 Vue.use(VueResource)
+import EventProxy from 'vue-event-proxy'
+Vue.use(EventProxy)
 
 Vue.config.productionTip = false
 
