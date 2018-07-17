@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册组件 component-1</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>注册组件 component-1</h1>
+    <hr>
+    <div id="app">
+        <dmliu></dmliu>  
+        <panda></panda>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('dmliu', {
+            template: `<div style="color: red">我是全局的dmliu组件</div>`
+        })
+        var app = new Vue({   //声明变量 
+            el: '#app',
+            components: {
+                "panda": {
+                    template: `<div style="color: green">我是局部的panda组件</div>`
+                }
+            } 
+        })
+    </script>
+</body>
+</html>

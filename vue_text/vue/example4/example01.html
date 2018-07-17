@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example 实例属性</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>example 实例属性</h1>
+    <hr>
+    <div id="app">
+        {{message}}   
+        <!-- 渲染 模板输出方式   -->
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({   //声明变量  vue实例化 声明器
+            el: '#app',
+            data:{    //参数
+                message: 'Hello World!'
+            },
+            mounted: function(){     // DOM挂载结束之后   jquery只能在mounted和updated中使用
+                $("#app").html('我是jquery!');       // html() 改变内容
+            },
+            methods: {
+                add: function(){
+                    console.log("调用了构造器内部的add方法。");
+                }
+            }
+        })
+
+        app.add();
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mixins Option 混入操作</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Mixins Option 混入操作</h1>
+    <hr>
+    <div id="app">
+        {{ number }}  
+        <p>
+            <button @click="add">ADD</button>
+        </p> 
+
+        <!-- 渲染 模板输出方式   -->
+    </div>
+
+    <script type="text/javascript">
+        var addConsole={     // 定义混入
+            updated: function(){
+                console.log('数据发生变化，变成了' + this.number);
+            }
+        };
+        
+        Vue.mixin({     // 全局混入
+            updated: function(){
+                console.log('我是全局的混入。');
+            }
+        });
+
+        var app = new Vue({   //声明变量  vue实例化 声明器
+            el: '#app',
+            data:{    //参数
+                number: 1
+            },
+            methods: {
+                add: function(){
+                    this.number++;
+                }
+            },
+            updated: function(){     // updated 生命周期
+                console.log('我是原生的。');
+            },
+            mixins: [ addConsole ]     // 使用混入
+        })
+    </script>
+</body>
+</html>

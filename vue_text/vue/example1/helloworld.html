@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloWorld</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Hello World 实例</h1>
+    <hr>
+    <div id="app">
+        {{message}}   
+        <!-- 渲染 模板输出方式   -->
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({   //声明变量  vue实例化 声明器
+            el: '#app',
+            data:{    //参数
+                message: 'Hello World!'
+            }
+        })
+    </script>
+</body>
+</html>

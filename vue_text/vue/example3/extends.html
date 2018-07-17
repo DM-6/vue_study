@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>extends Option 扩展选项</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>extends Option 扩展选项</h1>
+    <hr>
+    <div id="app">
+        <!-- {{ number }}  使用${}后， {{}}就不管用了 -->
+        ${ number }
+        <p>
+            <button @click="add">ADD</button>
+        </p> 
+
+        <!-- 渲染 模板输出方式   -->
+    </div>
+
+    <script type="text/javascript">
+        var extendsObj = {     // 扩展选项
+            updated: function(){
+                console.log('我是扩展的updated');
+            },
+            methods: {
+                add: function(){    // 扩展方法 方法名一样 不会执行（只执行构造器里的add方法）
+                    console.log('我是扩展的方法');
+                    this.number++;
+                }
+            }
+        };
+        var app = new Vue({   //声明变量  vue实例化 声明器
+            el: '#app',
+            data:{    //参数
+                number: 1
+            },
+            methods: {
+                add: function(){
+                    console.log('我是原生的方法');
+                    this.number++;
+                }
+            },
+            updated: function(){     // updated 生命周期
+                console.log('我是原生的upadted');
+            },
+            extends: extendsObj,   // 扩展只能放对象 不能放数组
+            delimiters: ['${', '}']
+        })
+    </script>
+</body>
+</html>

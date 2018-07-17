@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example 实例方法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>example 实例方法</h1>
+    <hr>
+    <div id="app"></div>
+    <p>
+        <button onclick="destroy()">卸载</button>
+    </p>
+    <p>
+        <button onclick="reload()">刷新</button>
+    </p>
+    <p>
+        <button onclick="tick()">更改数据</button>
+    </p>
+
+    <script type="text/javascript">
+        var jspang = Vue.extend({
+            template: `<p>{{ message }}</p>`,
+            data: function(){
+                return {
+                    message: 'Hello, I am DM!'
+                }
+            },
+            mounted: function(){
+                console.log("mounted 被创建！");
+            },
+            destroyed: function(){   // 生命周期钩子函数  被销毁之后
+                console.log("destroy 销毁之后");
+            },
+            updated: function(){
+                console.log("更新之后");
+            }
+        })
+
+        var vm = new jspang().$mount("#app");    // $mount()挂载扩展
+
+        function destroy(){    // $destroy()卸载方法
+            vm.$destroy();
+        }
+
+        function reload(){     // $forceUpdate()更新方法
+            vm.$forceUpdate();
+        }
+
+        function tick(){     // $nextTick()数据修改方法
+            vm.message = "update message info";   // 改变了扩展里的mesage
+            vm.$nextTick(function(){      // 调用了$nextTick() 它里边是回调函数 执行数据更新之后，如何回调
+                console.log("message更新完后我被调用了");
+            })
+        }
+    </script>
+</body>
+</html>
