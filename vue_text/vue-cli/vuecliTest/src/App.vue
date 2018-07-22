@@ -4,9 +4,10 @@
     <div>
       <router-link to="/">首页</router-link> |
       <router-link to="/Hi">Hi页面</router-link>|
-      <router-link to="/Hi/Hi1">-Hi1页面</router-link>|
+      <router-link :to="{ name: 'Hi1', params: {username: 'DM', id: '888'}}">-Hi1页面</router-link>|
       <router-link to="/Hi/Hi2">-Hi2页面</router-link>
     </div>
+    <p>{{ $route.name}}</p>
     <router-view/>
   </div>
 </template>

@@ -16,19 +16,21 @@ export default new Router({     // 接口 new了一个router
     },
     {
       path: '/hi',
-      name: 'Hi',
       component: Hi,
       children: [
         {
           path: '/',
+          name: 'Hi',
           component: Hi
         },
         {
           path: 'hi1',
+          name: 'Hi1',
           component: Hi1
         },
         {
           path: 'hi2',
+          name: 'Hi2',
           component: Hi2
         }
       ]
