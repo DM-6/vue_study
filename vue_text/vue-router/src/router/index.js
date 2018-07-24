@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import Hi1 from '@/components/Hi1'
-import Hi2 from '@/components/Hi2'
+import Params from '@/components/params'
 
 Vue.use(Router)
 
@@ -11,20 +10,10 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      components: {
-        default: HelloWorld,
-        left: Hi1,
-        right: Hi2
-      }
-    },
-    {
-      path: '/dm',
-      name: 'HelloWorld',
-      components: {
-        default: HelloWorld,
-        left: Hi2,
-        right: Hi1
-      }
+      components: HelloWorld
+    },{
+      path: '/params/:newsId/:newsTitle',
+      component: Params
     }
   ]
 })

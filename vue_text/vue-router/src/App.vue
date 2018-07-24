@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img src="./assets/logo.png"><br>
+    <router-link to="/">Home</router-link>
+    <router-link to="/params/198/DM website is very good!">params</router-link>
     <router-view/>
-    <router-view name="left" style="float: left; width: 50%; height: 300px; background-color: #ccc;"/>
-    <router-view name="right" style="float: right; width: 50%; height: 300px; background-color: #eee;"/>
-  </div>
+    </div>
 </template>
 
 <script>
